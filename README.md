@@ -1,2 +1,2 @@
-# frs-character-information
-frs-character-information
+# thanks for using this script.
+# discord.gg/frstudios
