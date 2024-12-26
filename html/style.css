@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+}
+
+.character-display {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 2;
+}
+
+.name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.job {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #e6e6e6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.glitch {
+    position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(31px, 9999px, 94px, 0);
+        transform: skew(0.85deg);
+    }
+    5% {
+        clip: rect(70px, 9999px, 71px, 0);
+        transform: skew(0.85deg);
+    }
+    10% {
+        clip: rect(29px, 9999px, 76px, 0);
+        transform: skew(-0.85deg);
+    }
+    15% {
+        clip: rect(38px, 9999px, 89px, 0);
+        transform: skew(0.4deg);
+    }
+    20% {
+        clip: rect(75px, 9999px, 75px, 0);
+        transform: skew(-0.4deg);
+    }
+    25% {
+        clip: rect(35px, 9999px, 35px, 0);
+        transform: skew(0.85deg);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip: rect(65px, 9999px, 99px, 0);
+        transform: skew(0.85deg);
+    }
+    5% {
+        clip: rect(70px, 9999px, 71px, 0);
+        transform: skew(0.85deg);
+    }
+    10% {
+        clip: rect(29px, 9999px, 76px, 0);
+        transform: skew(-0.85deg);
+    }
+    15% {
+        clip: rect(38px, 9999px, 89px, 0);
+        transform: skew(0.4deg);
+    }
+}
+
+.show-name {
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.show-job {
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.6s;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
